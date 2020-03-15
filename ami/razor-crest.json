@@ -1,0 +1,24 @@
+{
+  "builders": [{
+    "ami_name": "ami-razor-crest-{{timestamp}}",
+    "instance_type": "t2.micro",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "name": "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*",
+        "root-device-type": "ebs"
+      },
+      "owners": ["099720109477"],
+      "most_recent": true
+    },
+    "ssh_username": "ubuntu",
+    "profile": "terraform",
+    "region": "us-east-2",
+    "type": "amazon-ebs",
+    "tags": {"Name": "ami-razor-crest"}
+  }],
+  "provisioners": [
+    {"type": "shell", "script": "./docker.sh", "expect_disconnect": true},
+    {"type": "shell", "script": "./kubernetes.sh"}
+  ]
+}

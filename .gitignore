@@ -1,0 +1,17 @@
+### JetBrains IDEs ###
+*.iml
+*.ipr
+.idea/
+
+### Packer ###
+*.box
+packer_cache/
+
+### Terraform ###
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*_override.tf
+*_override.tf.json
+override.tf
+override.tf.json
